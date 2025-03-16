@@ -32,16 +32,25 @@ def calculate_nominations(n_verified, n_current, i, n_assembly):
 
 
 def main():
-    print(f"== WEEK {N_WEEKS_PASSED} NOMINATIONS")
+    print(f"\n{'='*50}")
+    print(f"WEEK {N_WEEKS_PASSED} NOMINATIONS".center(50))
+    print('='*50)
+    
+    # Print header
+    print(f"{'Role':<15} {'Target':>8} {'Current':>8} {'Nominations':>12}")
+    print('-'*50)
+    
+    # Print each row
     for i in range(1, len(DISTRIBUTION)):
         name = DISTRIBUTION[i][0]
         n_verified = DISTRIBUTION[0][1]
         n_current = DISTRIBUTION[i][1]
         target, nominations = calculate_nominations(
             n_verified, n_current, i, N_ASSEMBLY)
-        print(
-            f"- {name}: Current {n_current}, Target {target}, Nominations {nominations}")
-    print("==")
+        
+        print(f"{name:<15} {target:>8,d} {n_current:>8,d} {nominations:>12,d}")
+    
+    print('='*50 + '\n')
 
 
 if __name__ == "__main__":
